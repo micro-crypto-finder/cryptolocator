@@ -8,6 +8,15 @@ public class PriceDataDto {
 
     private String disclaimer;
 
+    public PriceDataDto() {
+    }
+
+    public PriceDataDto(String code, String value, String disclaimer) {
+        this.code = code;
+        this.value = value;
+        this.disclaimer = disclaimer;
+    }
+
     public String getCode() {
         return code;
     }
