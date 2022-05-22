@@ -1,7 +1,7 @@
 package com.jjbeto.microservice.cryptolocator.service;
 
 import com.jjbeto.microservice.cryptolocator.client.CoinDeskClient;
-import com.jjbeto.microservice.cryptolocator.dto.CoinBaseResponseBpiDto;
+import com.jjbeto.microservice.cryptolocator.dto.CoinDeskResponseBpiDto;
 import com.jjbeto.microservice.cryptolocator.dto.CoinDeskResponseDto;
 import com.jjbeto.microservice.cryptolocator.dto.PriceDataDto;
 import feign.FeignException;
@@ -16,7 +16,7 @@ public class CoinDeskService {
 
     public static final String CACHE_COIN_PRICE = "CryptoApiService.getLastPrice";
 
-    private static final String CURRENCY_FORMAT = "%s.json";
+    public static final String CURRENCY_FORMAT = "%s.json";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CoinDeskService.class);
 
@@ -54,7 +54,7 @@ public class CoinDeskService {
             resultCurrency = fallbackCurrency;
         }
 
-        final CoinBaseResponseBpiDto bpi = responseDto.getBpi().getOrDefault(resultCurrency, new CoinBaseResponseBpiDto());
+        final CoinDeskResponseBpiDto bpi = responseDto.getBpi().getOrDefault(resultCurrency, new CoinDeskResponseBpiDto());
         final PriceDataDto priceDataDto = new PriceDataDto(resultCurrency, bpi.getRateFloat(), responseDto.getDisclaimer());
         LOGGER.info("Price for currency '{}' found, price: '{}'", resultCurrency, priceDataDto.getValue());
         return priceDataDto;

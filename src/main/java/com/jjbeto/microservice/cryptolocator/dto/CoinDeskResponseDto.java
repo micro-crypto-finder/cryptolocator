@@ -1,12 +1,20 @@
 package com.jjbeto.microservice.cryptolocator.dto;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class CoinDeskResponseDto {
 
     private String disclaimer;
 
-    private HashMap<String, CoinBaseResponseBpiDto> bpi;
+    private Map<String, CoinDeskResponseBpiDto> bpi;
+
+    public CoinDeskResponseDto() {
+    }
+
+    public CoinDeskResponseDto(String disclaimer, Map<String, CoinDeskResponseBpiDto> bpi) {
+        this.disclaimer = disclaimer;
+        this.bpi = bpi;
+    }
 
     public String getDisclaimer() {
         return disclaimer;
@@ -16,11 +24,11 @@ public class CoinDeskResponseDto {
         this.disclaimer = disclaimer;
     }
 
-    public HashMap<String, CoinBaseResponseBpiDto> getBpi() {
+    public Map<String, CoinDeskResponseBpiDto> getBpi() {
         return bpi;
     }
 
-    public void setBpi(HashMap<String, CoinBaseResponseBpiDto> bpi) {
+    public void setBpi(Map<String, CoinDeskResponseBpiDto> bpi) {
         this.bpi = bpi;
     }
 
